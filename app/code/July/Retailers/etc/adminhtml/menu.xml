@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="DCKAP_Retailers::retailers"
+                title="Retailers"
+                translate="title"
+                module="DCKAP_Retailers"
+                sortOrder="30"
+                parent="Magento_Customer::customer"
+                resource="DCKAP_Retailer::retailers"/>
+        <add
+                id="DCKAP_Retailers::manage"
+                title="Manage Retailers"
+                translate="title"
+                module="DCKAP_Retailers"
+                sortOrder="30"
+                parent="DCKAP_Retailers::retailers"
+                action="retailers/index/index"
+                resource="DCKAP_Retailer::manage"/>
+    </menu>
+</config>

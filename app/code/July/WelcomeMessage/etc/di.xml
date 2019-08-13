@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="July\WelcomeMessage\Api\VisitorLocationInterface"
+                type="July\WelcomeMessage\Model\VisitorLocation"/>
+    <preference for="July\WelcomeMessage\Api\Data\LocationInterface"
+                type="July\WelcomeMessage\Model\Data\Location"/>
+    <preference for="July\WelcomeMessage\Api\GeoInterface"
+                type="July\WelcomeMessage\Model\IpApiCacher"/>
+    <type name="July\WelcomeMessage\Model\IpApiCacher">
+        <arguments>
+            <argument name="geoIp" xsi:type="object">July\WelcomeMessage\Model\IpApi</argument>
+        </arguments>
+    </type>
+    <!--    <preference for="Magento\Theme\Block\Html\Header" type="July\WelcomeMessage\Block\Header"/>-->
+    <type name="Magento\Theme\Block\Html\Header">
+        <plugin name="welcome_plugin" type="July\WelcomeMessage\Plugin\Header" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Price_plugin" type="July\WelcomeMessage\Plugin\PriceChange" sortOrder="1"/>
+    </type>
+    <!--    <type name="July\WelcomeMessage\Model\Data\Location">-->
+    <!--        <arguments>-->
+    <!--            <argument name="country" xsi:type="string">US</argument>-->
+    <!--            <argument name="region" xsi:type="string">NK</argument>-->
+    <!--        </arguments>-->
+    <!--    </type>-->
+
+    <virtualType name="July\WelcomeMessage\Model\VisitorLocation\Virtual\Store" type="July\WelcomeMessage\Model\VisitorLocation">
+        <arguments>
+            <argument name="scope" xsi:type="string">store</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="July\WelcomeMessage\Model\VisitorLocation\Virtual\Welcome" type="July\WelcomeMessage\Model\VisitorLocation">
+        <arguments>
+            <argument name="website" xsi:type="string">Website</argument>
+        </arguments>
+    </virtualType>
+</config>

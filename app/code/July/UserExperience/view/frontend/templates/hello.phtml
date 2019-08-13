@@ -1,0 +1,8 @@
+<?php $color = $block->getData("color");
+$color = $color ? $color : "blue";
+?>
+
+<?php echo $block->getChildHtml('child1'); ?>
+    <h1 style="color: <?php echo $color; ?>; font-size:<?php echo $block->getData('size'); ?>"><?php echo $block->getViewModel()->getMessage(); ?></h1>
+
+<?php echo $block->getChildHtml('child2'); ?>

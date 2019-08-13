@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+<!--    <body>-->
+<!--        <referenceContainer name="main">-->
+<!--            <block class="Magento\Framework\View\Element\Template" name="custom.block"-->
+<!--                   template="July_UserExperience::hello.phtml"/>-->
+<!--        </referenceContainer>-->
+<!--    </body>-->
+<!--</page>-->
+
+<!--2CLOUM RIGHT WILL BE RIGHT SIDE BAR LEFT WILL BE LEFT SIDE BAR NAME SHULD CONTAIN THW MAIN CONTAINE-->
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right"-->
+<!--      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+<!--<body>-->
+<!--    <referenceContainer name="sidebar.main">-->
+<!--        <block class="Magento\Framework\View\Element\Template" name="custom.block"-->
+<!--               template="July_UserExperience::hello.phtml"/>-->
+<!--    </referenceContainer>-->
+<!--</body>-->
+<!--</page>-->
+
+<!--AT THE TOP OR BEFORE TO THE CONTENT-->
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right"-->
+<!--      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+<!--<body>-->
+<!--    <referenceContainer name="sidebar.additional">-->
+<!--        <block class="Magento\Framework\View\Element\Template" name="custom.block"-->
+<!--               template="July_UserExperience::hello.phtml" before="wishlist_sidebar"/>-->
+<!--    </referenceContainer>-->
+<!--</body>-->
+<!--</page>-->
+
+<!--AT THE BOTTOM OF THE CONTENT-->
+<!--<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right"-->
+<!--      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+<!--<body>-->
+<!--    <referenceContainer name="sidebar.additional">-->
+<!--        <block class="Magento\Framework\View\Element\Template" name="custom.block"-->
+<!--               template="July_UserExperience::hello.phtml" after="wishlist_sidebar"/>-->
+<!--    </referenceContainer>-->
+<!--</body>-->
+<!--</page>-->
+
+<!--AT THE VERY BOTTOM and two containers-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<!--    <update handle="customer_account"/>-->
+    <body>
+        <referenceContainer name="sidebar.additional">
+            <block class="July\UserExperience\Block\Custom1" name="custom1.block"
+                   template="July_UserExperience::hello1.phtml" before="-">
+                <arguments>
+                    <argument name="color" xsi:type="string">green</argument>
+                    <argument name="size" xsi:type="string">16px</argument>
+                </arguments>
+            </block>
+            <block class="July\UserExperience\Block\Custom" name="custom.block"
+                   template="July_UserExperience::hello1.phtml" after="-">
+                <arguments>
+                    <argument name="color" xsi:type="string">red</argument>
+                    <argument name="size" xsi:type="string">14px</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="main">
+            <block class="Magento\Framework\View\Element\Template" name="custom.block.main"
+                   template="July_UserExperience::hello.phtml">
+                <arguments>
+                    <argument name="color" xsi:type="string">yellow</argument>
+                    <argument name="size" xsi:type="string">25px</argument>
+                    <argument name="view_model" xsi:type="object">July\UserExperience\ViewModel\Custom</argument>
+                </arguments>
+                <block class="Magento\Framework\View\ElemeViewMnt\Template" name="custom.block.main.sub1"
+                       template="July_UserExperience::child.phtml" as="child1">
+
+                    <arguments>
+                        <argument name="pri" xsi:type="string">
+                            1
+                        </argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Framework\View\Element\Template" name="custom.block.main.sub2"
+                       template="July_UserExperience::child.phtml" as="child2">
+                    <arguments>
+                        <argument name="pri" xsi:type="string">
+                            2
+                        </argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="July\UserExperience\Block\Custom" name="custom.header.text" after="-"
+                   template="July_UserExperience::custom.phtml">
+                <arguments>
+                    <argument name="headerText" xsi:type="string">Hi Am from Argument</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceBlock name="header.links">
+            <block class="Magento\Framework\View\Element\Template" name="add-new-header-link"
+                   template="July_UserExperience::custom1.phtml" before="-">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">New Link</argument>
+                    <argument name="path" xsi:type="string" translate="true">new-link</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <!--        To remove the lock-->
+        <!--        <referenceBlock name="custom.header.text" remove="true"/>-->
+        <referenceBlock name="add-new-header-link" remove="true"/>
+
+        <!--        <referenceBlock name="custom.block.main">-->
+        <!--            <action method="setTemplate">-->
+        <!--                &lt;!&ndash;                <arguments>&ndash;&gt;-->
+        <!--                <argument name="template" xsi:type="string">July_UserExperience::hello1.phtml</argument>-->
+        <!--                &lt;!&ndash;                </arguments>&ndash;&gt;-->
+        <!--            </action>-->
+        <!--        </referenceBlock>-->
+        <move element="custom.block.main.sub1" destination="sidebar.additional" as="new_child" after="-"/>
+    </body>
+</page>
+
+        <!--To remove the unwanted js and css-->
+        <!--<remove src="sdfdsfsdf/sfddsf/fdsff.ccd"/>-->

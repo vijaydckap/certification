@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="retailers" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Retailer</label>
+            <tab>customer</tab>
+            <resource>Magento_Customer::config_customer</resource>
+            <group id="general" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="status" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New default address</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="address" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Address</label>
+                    <comment>This will be used as default address</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

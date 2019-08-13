@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <preference for="DCKAP\Retailers\Api\Data\RetailerDTOInterface" type="DCKAP\Retailers\Model\Data\RetailerDTO"/>
+   <preference for="DCKAP\Retailers\Api\RetailerRepositoryInterface" type="DCKAP\Retailers\Model\RetailerRepository"/>
+   <preference for="DCKAP\Retailers\Api\RetailerSearchResultInterface" type="Magento\Framework\Api\SearchResults"/>
+
+   <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+      <arguments>
+         <argument name="collections" xsi:type="array">
+            <item name="retailers_listing_data_source" xsi:type="string">DCKAP\Retailers\Model\ResourceModel\Retailers\Collection</item>
+
+         </argument>
+      </arguments>
+   </type>
+</config>
